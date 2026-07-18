@@ -1,0 +1,20 @@
+# Portable SSH - Python dependencies
+#
+# Core functionality is built on the Python 3.11+ standard library
+# (subprocess, socket, platform, pathlib, dataclasses, enum, signal,
+# argparse, logging). This keeps the tool portable and easy to run
+# on a machine with nothing pre-installed.
+#
+# External dependencies are kept minimal and are used only where the
+# standard library is insufficient or significantly harder to use
+# correctly across platforms.
+
+# Cross-platform network interface enumeration (IP addresses, subnet
+# masks, default gateway). The stdlib `socket` module cannot reliably
+# enumerate all interfaces/adapters across Windows, Linux, and macOS.
+psutil>=5.9.0
+
+# Cross-platform colored terminal output for the connection-info
+# display. Falls back gracefully to plain text if the terminal does
+# not support ANSI colors.
+colorama>=0.4.6; sys_platform == "win32"
