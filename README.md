@@ -99,7 +99,7 @@ Requires **Python 3.11+**.
 
 ```bash
 git clone https://github.com/BrianxBorne/Portable-SSH.git
-cd portable-ssh
+cd Portable-SSH
 pip install -r requirements.txt
 ```
 
