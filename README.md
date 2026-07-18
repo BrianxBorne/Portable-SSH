@@ -143,19 +143,19 @@ SSH Port         : 22
 Network Interfaces
 
 Ethernet
-192.168.1.50
+192.xx.x.xx
 
 Wi-Fi
-10.0.0.40
+10.x.x.xx
 
 VPN
-172.18.5.12
+172.xx.x.xx
 
 Reachable Addresses
 
-ssh brian@192.168.1.50
-ssh brian@10.0.0.40
-ssh brian@172.18.5.12
+ssh saitama@192.xxx.x.xx
+ssh saitama@10.x.x.xx
+ssh saitama@172.xx.x.xx
 
 Press Ctrl+C to stop Portable SSH...
 ```
