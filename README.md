@@ -98,7 +98,7 @@ Unlisted Debian-, RHEL-, Arch-, or SUSE-based distributions (e.g. Linux Mint, Po
 Requires **Python 3.11+**.
 
 ```bash
-git clone <this-repo>
+git clone https://github.com/BrianxBorne/Portable-SSH.git
 cd portable-ssh
 pip install -r requirements.txt
 ```
