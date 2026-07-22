@@ -50,44 +50,45 @@ Portable SSH detects your operating system, installs an SSH server only if one i
 | openSUSE (Leap / Tumbleweed) | `zypper` | |
 | macOS | native `systemsetup` (Remote Login) | Requires running with `sudo` |
 
-Unlisted Debian-, RHEL-, Arch-, or SUSE-based distributions (e.g. Linux Mint, Pop!_OS, Nobara) are automatically handled via `/etc/os-release`'s `ID_LIKE` fallback, using the closest matching family's commands.
+### Installation
 
+| Requirement    | Details          |
+| -------------- | ---------------- |
+| Python Version | **Python 3.11+** |
 
-## Installation
+### Setup
 
-Requires **Python 3.11+**.
+| Step                 | Command                                                     |
+| -------------------- | ----------------------------------------------------------- |
+| Clone Repository     | `git clone https://github.com/BrianxBorne/Portable-SSH.git` |
+| Enter Project        | `cd Portable-SSH`                                           |
+| Install Dependencies | `pip install -r requirements.txt`                           |
 
-```bash
-git clone https://github.com/BrianxBorne/Portable-SSH.git
-cd Portable-SSH
-pip install -r requirements.txt
-```
+### Dependencies
 
-Dependencies :
-- [`psutil`](https://pypi.org/project/psutil/) — cross-platform network interface enumeration
-- [`colorama`](https://pypi.org/project/colorama/) — Windows-only, optional terminal color support
+| Package      | Purpose                                       |
+| ------------ | --------------------------------------------- |
+| **psutil**   | Cross-platform network interface enumeration  |
+| **colorama** | Windows-only, optional terminal color support |
 
 ---
 
 ## Usage
 
-Run with the privileges your OS requires (Administrator on Windows, `sudo` on Linux/macOS):
+### Running the Application
 
-```bash
-# Linux / macOS
-sudo python3 portable_ssh.py
+| Operating System  | Command                        | Notes                                                 |
+| ----------------- | ------------------------------ | ----------------------------------------------------- |
+| **Linux / macOS** | `sudo python3 portable_ssh.py` | Requires `sudo`                                       |
+| **Windows**       | `python portable_ssh.py`       | Run PowerShell or Command Prompt **as Administrator** |
 
-# Windows (run PowerShell/cmd "as Administrator")
-python portable_ssh.py
-```
+### Debug / Verbose Mode
 
-Enable verbose/debug logging for diagnostics:
+| Purpose                           | Command                                  |
+| --------------------------------- | ---------------------------------------- |
+| Enable verbose diagnostic logging | `sudo python3 portable_ssh.py --verbose` |
 
-```bash
-sudo python3 portable_ssh.py --verbose
-```
-
-Example output:
+## Example output
 
 ```
 ==========================================================
