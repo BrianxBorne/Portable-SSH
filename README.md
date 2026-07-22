@@ -5,35 +5,34 @@ Temporarily enable SSH on a machine for remote access — and leave the machine 
 Portable SSH detects your operating system, installs an SSH server only if one isn't already present, starts the SSH service only if it isn't already running, shows you everything you need to connect to this machine remotely, and automatically restores the original state the moment you stop it.
 
 ```
-                               ┌──────────────────────────────────────────┐
-                               │            portable_ssh.py               │
-                               │              Entry Point                 │
-                               │  Orchestrates the complete application   │
-                               └───────────────┬──────────────────────────┘
-                                               │
-          ┌────────────────────┬───────────────┼───────────────┬────────────────────┐
-          ▼                    ▼               ▼               ▼                    ▼
-┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐
-│   platform.py    │ │  installer.py    │ │   services.py    │ │   network.py     │ │   cleanup.py     │
-├──────────────────┤ ├──────────────────┤ ├──────────────────┤ ├──────────────────┤ ├──────────────────┤
-│ • Detect OS      │ │ • Check SSH      │ │ • Check service  │ │ • Hostname       │ │ • RunState       │
-│ • Detect distro  │ │ • Install SSH    │ │ • Start/Stop     │ │ • Local IPs      │ │ • Restore state  │
-│ • OS commands    │ │ • Uses platform  │ │ • Restart        │ │ • Gateway        │ │ • Safe exit      │
-└─────────┬────────┘ └─────────┬────────┘ └─────────┬────────┘ └─────────┬────────┘ └─────────┬────────┘
-          │                    │                    │                    │                    │
-          └────────────────────┴────────────────────┴────────────────────┴────────────────────┘
-                                               │
-                                               ▼
-                             ┌──────────────────────────────────────────┐
-                             │               utils.py                   │
-                             ├──────────────────────────────────────────┤
-                             │ Shared by all modules                    │
-                             │ • Logging                                │
-                             │ • Subprocess execution                   │
-                             │ • Privilege checks                       │
-                             │ • Output formatting                      │
-                             │ • Common helper functions                │
-                             └──────────────────────────────────────────┘
+┌──────────────────────────────────────────┐
+│            portable_ssh.py               │
+│              Entry Point                 │
+│  Orchestrates the complete application   │
+└────────────────┬─────────────────────────┘
+                 │
+ ┌───────────────┼───────────────┬───────────────┬───────────────┬───────────────────┐
+ ▼               ▼               ▼               ▼               ▼                   ▼
+┌──────────────────┐┌──────────────────┐┌──────────────────┐┌──────────────────┐┌──────────────────┐
+│   platform.py    ││  installer.py    ││   services.py    ││   network.py     ││   cleanup.py     │
+├──────────────────┤├──────────────────┤├──────────────────┤├──────────────────┤├──────────────────┤
+│ • Detect OS      ││ • Check SSH      ││ • Check service  ││ • Hostname       ││ • RunState       │
+│ • Detect distro  ││ • Install SSH    ││ • Start/Stop     ││ • Local IPs      ││ • Restore state  │
+│ • OS commands    ││ • Uses platform  ││ • Restart        ││ • Gateway        ││ • Safe exit      │
+└────────┬─────────┘└────────┬─────────┘└────────┬─────────┘└────────┬─────────┘└────────┬─────────┘
+         └───────────────────┴───────────────────┴───────────────────┴───────────────────┘
+                                     │
+                                     ▼
+                     ┌──────────────────────────────────────────┐
+                     │               utils.py                   │
+                     ├──────────────────────────────────────────┤
+                     │ Shared by all modules                    │
+                     │ • Logging                                │
+                     │ • Subprocess execution                   │
+                     │ • Privilege checks                       │
+                     │ • Output formatting                      │
+                     │ • Common helper functions                │
+                     └──────────────────────────────────────────┘
 ```
 
 ## Supported Platforms
